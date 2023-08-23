@@ -3,10 +3,11 @@ using CryptoGateway.Core.Services.Interfaces;
 
 namespace CryptoGateway.API.IoC;
 
-public static class ServiceServicesCollection
+public static class ServicesServiceCollection
 {
-    public static void CryptoGatewayService(this IServiceCollection services)
+    public static void AddHttpClientService(this IServiceCollection services)
     {
-        services.AddSingleton<IHttpService, HttpService>();
+        services.AddHttpClient<HttpClientService>();
+        services.AddScoped<IHttpClientService, HttpClientService>();
     }
 }

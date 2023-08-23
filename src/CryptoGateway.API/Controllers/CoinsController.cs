@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Text.Json;
-using CryptoGateway.Core.Wrapper;
+using CryptoGateway.Core.Services.Interfaces;
+using CryptoGateway.Domain.Constants;
 using CryptoGateway.Domain.Domain;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,23 +7,33 @@ namespace CryptoGateway.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class CoinController : ControllerBase
+public class CoinsController : ControllerBase
 {
-    private readonly IBinanceEndpoint _binanceEndpoint;
+    private readonly IHttpClientService _httpClientService;
 
-    public CoinController(IBinanceEndpoint binanceEndpoint)
+    public CoinsController(IHttpClientService httpClientService)
     {
-        _binanceEndpoint = binanceEndpoint;
+        _httpClientService = httpClientService;
     }
     
     [HttpGet]
-    public async Task<ICollection<Coin>> GetCoins()
+    public async Task<string> GetCoins()
     {
-        var str = await _binanceEndpoint.GetCoin();
+        var urls = BrokersConstants.url;
         
-        var coins = JsonSerializer.Deserialize<List<Coin>>(str);
+        foreach (var url in urls)
+        {
+        var coins = url switch
+        {
+            string str when str.Contains("kucoin") => await _httpClientService.GetAsync<KucoinResponse>(url),
+            string str when str.Contains("binance") => await _httpClientService.GetAsync<BinanceResponse>(url)
+        };
         
-        return coins;
+        var result = coins;
+        }
+
+        return "";
+
     }
     
 }

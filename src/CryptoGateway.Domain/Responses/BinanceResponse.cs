@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace CryptoGateway.Domain.Domain;
 
-public class Coin
+public class BinanceResponse
 {
     public string symbol { get; set; }
     public string priceChange { get; set; }

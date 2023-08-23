@@ -1,8 +1,44 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoGateway.API", "src\CryptoGateway.API\CryptoGateway.API.csproj", "{7DE8232C-E1BA-46DD-ACF2-4F6E0A84FA74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoGateway.Core", "src\CryptoGateway.Core\CryptoGateway.Core.csproj", "{C7C6CB3B-47A0-4FD1-854A-75854C4542CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoGateway.Domain", "src\CryptoGateway.Domain\CryptoGateway.Domain.csproj", "{861C81C7-9AED-4A8F-AD25-81633569EB14}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A5934EE8-387E-4F5D-8F06-EBC61D2D4D13}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{189BF553-3D0F-44EA-AAA3-A158AD1A8A40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoGateway.Tests", "tests\CryptoGateway.Tests\CryptoGateway.Tests.csproj", "{7456F321-8CDC-4030-B0BD-CFC942401470}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7DE8232C-E1BA-46DD-ACF2-4F6E0A84FA74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DE8232C-E1BA-46DD-ACF2-4F6E0A84FA74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DE8232C-E1BA-46DD-ACF2-4F6E0A84FA74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DE8232C-E1BA-46DD-ACF2-4F6E0A84FA74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7C6CB3B-47A0-4FD1-854A-75854C4542CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7C6CB3B-47A0-4FD1-854A-75854C4542CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7C6CB3B-47A0-4FD1-854A-75854C4542CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7C6CB3B-47A0-4FD1-854A-75854C4542CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{861C81C7-9AED-4A8F-AD25-81633569EB14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{861C81C7-9AED-4A8F-AD25-81633569EB14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{861C81C7-9AED-4A8F-AD25-81633569EB14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{861C81C7-9AED-4A8F-AD25-81633569EB14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7456F321-8CDC-4030-B0BD-CFC942401470}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7456F321-8CDC-4030-B0BD-CFC942401470}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7456F321-8CDC-4030-B0BD-CFC942401470}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7456F321-8CDC-4030-B0BD-CFC942401470}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7DE8232C-E1BA-46DD-ACF2-4F6E0A84FA74} = {A5934EE8-387E-4F5D-8F06-EBC61D2D4D13}
+		{C7C6CB3B-47A0-4FD1-854A-75854C4542CC} = {A5934EE8-387E-4F5D-8F06-EBC61D2D4D13}
+		{861C81C7-9AED-4A8F-AD25-81633569EB14} = {A5934EE8-387E-4F5D-8F06-EBC61D2D4D13}
+		{7456F321-8CDC-4030-B0BD-CFC942401470} = {189BF553-3D0F-44EA-AAA3-A158AD1A8A40}
 	EndGlobalSection
 EndGlobal
