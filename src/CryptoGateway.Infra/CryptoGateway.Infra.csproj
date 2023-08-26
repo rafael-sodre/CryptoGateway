@@ -6,7 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-
-
+    <ItemGroup>
+      <ProjectReference Include="..\CryptoGateway.Core\CryptoGateway.Core.csproj" />
+      <ProjectReference Include="..\CryptoGateway.Domain\CryptoGateway.Domain.csproj" />
+    </ItemGroup>
 
 </Project>

@@ -12,21 +12,38 @@ public class HttpClientService : IHttpClientService
         _httpClient = httpClient;
     }
 
-    public async Task<T?> GetAsync<T>(string url) where T : new()
+    public async Task<List<T?>> GetAsync<T>(Uri uri) where T : new()
     {
-        var response = await _httpClient.GetAsync($"{url}");
-        
-        var result = new T();
-
-        if (!response.IsSuccessStatusCode)
+        try
         {
+            var response = await _httpClient.GetAsync(uri);
+        
+            var result = new List<T?>();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return result;
+            }
+        
+            var content = await response.Content.ReadAsStringAsync();
+
+            try
+            {
+                var contentDeserialized = JsonSerializer.Deserialize<T>(content);
+                result.Add(contentDeserialized);
+            }
+            catch (JsonException)
+            {
+                var contentDeserialized = JsonSerializer.Deserialize<List<T>>(content);
+                result.AddRange(contentDeserialized);
+            }
+        
             return result;
         }
-        
-        var content = await response.Content.ReadAsStringAsync();
-        result = JsonSerializer.Deserialize<T>(content);
-        
-        return result;
-
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 }

@@ -2,5 +2,5 @@ namespace CryptoGateway.Core.Services.Interfaces;
 
 public interface IHttpClientService
 {
-    Task<T?> GetAsync<T>(string baseUrl) where T : new();
+    Task<List<T?>> GetAsync<T>(Uri uri) where T : new();
 }
