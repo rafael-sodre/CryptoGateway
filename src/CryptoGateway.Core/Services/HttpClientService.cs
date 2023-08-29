@@ -27,6 +27,7 @@ public class HttpClientService : IHttpClientService
         
             var content = await response.Content.ReadAsStringAsync();
 
+            //TODO: criar uma sobrecarga neste método. Um retornando uma lista outro retornando um elemento
             try
             {
                 var contentDeserialized = JsonSerializer.Deserialize<T>(content);

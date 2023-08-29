@@ -13,8 +13,9 @@ public static class ServicesServiceCollection
         services.AddTransient<IHttpClientService, HttpClientService>();
     }
 
-    public static void AddBinanceAdapter(this IServiceCollection services)
+    public static void AddAdapters(this IServiceCollection services)
     {
-        services.AddTransient<IBinanceExchangeAdapter, BinanceExchangeAdapter>();
+        services.AddTransient<IExchange, BinanceExchange>();
+        //services.AddTransient<IExchange, KucoinExchange>();
     }
 }

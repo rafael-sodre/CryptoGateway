@@ -8,7 +8,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddHttpClientService();
-builder.Services.AddBinanceAdapter();
+builder.Services.AddAdapters();
 
 var app = builder.Build();
 
