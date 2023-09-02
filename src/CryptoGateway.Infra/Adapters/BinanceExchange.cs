@@ -18,23 +18,32 @@ public class BinanceExchange : ExchangeBase, IExchange
 
     public async Task<List<ExchangeResponse>> GetCryptoPriceAsync(string? symbol)
     {
-        if (string.IsNullOrWhiteSpace(symbol))
+        try
         {
-            symbol = DefineSymbol(symbol);
+            if (!string.IsNullOrWhiteSpace(symbol))
+            {
+                symbol = DefineSymbol(symbol);
+            }
+
+            var uri = GenerateUri(ExchangeConstants.BinanceBaseUrl, ExchangeConstants.BinancePath, symbol);
+
+            var binanceResponse = await _httpClientService.GetAsync<BinanceResponse>(uri);
+
+            var exchangeResponses = new List<ExchangeResponse>();
+
+            var criptoresponses = binanceResponse.Select(response =>
+                new CryptoResponse(response?.askPrice, response.symbol)).ToList();
+
+            var exchangeResponse = new ExchangeResponse(ExchangeName, criptoresponses);
+            exchangeResponses.Add(exchangeResponse);
+        
+            return exchangeResponses;
         }
-        
-        var uri = GenerateUri(ExchangeConstants.KucoinBaseUrl, ExchangeConstants.KucoinPath, symbol);
-        
-        var binanceResponse = await _httpClientService.GetAsync<BinanceResponse>(uri);
-
-        var exchangeResponses = new List<ExchangeResponse>();
-        
-        var criptoresponses = binanceResponse.Select(response => new CryptoResponse((response?.askPrice ?? 0M).ToString("M2"), response.symbol)).ToList();
-
-        var exchangeResponse = new ExchangeResponse(ExchangeName, criptoresponses);
-        exchangeResponses.Add(exchangeResponse);
-        
-        return exchangeResponses;
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            throw;
+        }
 
     }
     

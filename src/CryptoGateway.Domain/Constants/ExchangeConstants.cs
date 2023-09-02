@@ -8,5 +8,5 @@ public class ExchangeConstants
     public const string BinancePath = "/api/v3/ticker/24hr";
     
     public const string KucoinBaseUrl = "https://api.kucoin.com/";
-    public const string KucoinPath = "/api/v1/symbols";
+    public const string KucoinPath = "api/v1/market/stats";
 }

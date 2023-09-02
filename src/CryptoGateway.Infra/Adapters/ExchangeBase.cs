@@ -6,12 +6,12 @@ public abstract class ExchangeBase
     {
         var path = basePath;
 
-        if (!string.IsNullOrWhiteSpace(symbol))
+        if (string.IsNullOrWhiteSpace(symbol))
         {
             return new Uri(new Uri(baseUrl), path);
         }
         
-        path += $"/api/v1/market/stats?symbol={symbol}";
+        path += $"?symbol={symbol}";
 
         return new Uri(new Uri(baseUrl), path);
     }

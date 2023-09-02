@@ -8,20 +8,26 @@ namespace CryptoGateway.API.Controllers;
 [Route("[controller]")]
 public class CryptoController : ControllerBase
 {
-    private readonly IExchange _exchange;
+    private readonly IEnumerable<IExchange> _exchanges;
 
-    public CryptoController(IExchange exchange)
+    public CryptoController(IEnumerable<IExchange> exchanges)
     {
-        _exchange = exchange;
+        _exchanges = exchanges;
     }
 
     [HttpGet]
     public async Task<ICollection<ExchangeResponse>> GetCoins(string? symbol)
     {
-        // TODO: Criar uma nova camada de serviço que faça a chamada de todos os Adapters
-        var exchangeResponse = await _exchange.GetCryptoPriceAsync(symbol!);
 
-        return exchangeResponse;
+        var exchangesResponses = new List<ExchangeResponse>();
+        foreach (var exchange in _exchanges)
+        {
+            var response = await exchange.GetCryptoPriceAsync(symbol);
+            exchangesResponses.AddRange(response);
+
+        }
+        
+        return exchangesResponses;
 
     }
     

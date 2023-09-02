@@ -10,12 +10,13 @@ public static class ServicesServiceCollection
     public static void AddHttpClientService(this IServiceCollection services)
     {
         services.AddHttpClient();
-        services.AddTransient<IHttpClientService, HttpClientService>();
+        services.AddScoped<IHttpClientService, HttpClientService>();
     }
 
     public static void AddAdapters(this IServiceCollection services)
     {
-        services.AddTransient<IExchange, BinanceExchange>();
+        services.AddScoped<IExchange, BinanceExchange>();
+        services.AddScoped<IExchange, KucoinExchange>();
         //services.AddTransient<IExchange, KucoinExchange>();
     }
 }
