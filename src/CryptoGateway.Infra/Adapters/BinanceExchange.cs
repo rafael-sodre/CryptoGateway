@@ -49,6 +49,6 @@ public class BinanceExchange : ExchangeBase, IExchange
     
     public string? DefineSymbol(string? symbol)
     {
-        return $"{symbol}USDT";
+        return $"{symbol!.ToUpper()}USDT";
     }
 }

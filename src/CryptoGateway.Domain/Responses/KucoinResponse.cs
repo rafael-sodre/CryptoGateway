@@ -2,7 +2,7 @@ namespace CryptoGateway.Domain.Responses;
 
 public class KucoinResponse
 {
-    public List<KucoinData> data { get; set; }
+    public KucoinData data { get; set; }
 }
 
 public class KucoinData
