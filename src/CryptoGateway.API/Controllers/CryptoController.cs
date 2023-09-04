@@ -1,5 +1,5 @@
+using CryptoGateway.Core.Services.Interfaces;
 using CryptoGateway.Domain.Responses;
-using CryptoGateway.Infra.Adapters.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CryptoGateway.API.Controllers;
@@ -8,27 +8,16 @@ namespace CryptoGateway.API.Controllers;
 [Route("[controller]")]
 public class CryptoController : ControllerBase
 {
-    private readonly IEnumerable<IExchange> _exchanges;
+    private readonly IExchangeService _exchangeService;
 
-    public CryptoController(IEnumerable<IExchange> exchanges)
+    public CryptoController(IExchangeService exchangeService)
     {
-        _exchanges = exchanges;
+        _exchangeService = exchangeService;
     }
 
     [HttpGet]
     public async Task<ICollection<ExchangeResponse>> GetCoins(string? symbol)
     {
-
-        var exchangesResponses = new List<ExchangeResponse>();
-        foreach (var exchange in _exchanges)
-        {
-            var response = await exchange.GetCryptoPriceAsync(symbol);
-            exchangesResponses.AddRange(response);
-
-        }
-        
-        return exchangesResponses;
-
+        return await _exchangeService.GetCryptoPriceAsync(symbol);;
     }
-    
 }

@@ -12,8 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\CryptoGateway.Core\CryptoGateway.Core.csproj" />
-      <ProjectReference Include="..\CryptoGateway.Infra\CryptoGateway.Infra.csproj" />
+      <ProjectReference Include="..\CryptoGateway.Core\CryptoGateway.Core.csproj" />     
     </ItemGroup>
 
 

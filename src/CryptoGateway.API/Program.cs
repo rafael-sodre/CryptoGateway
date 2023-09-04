@@ -9,6 +9,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddHttpClientService();
 builder.Services.AddAdapters();
+builder.Services.AddFactories();
 
 var app = builder.Build();
 

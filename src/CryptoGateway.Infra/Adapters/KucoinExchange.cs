@@ -16,7 +16,7 @@ public class KucoinExchange : ExchangeBase, IExchange
     {
         _httpClientService = httpClientService;
     }
-    
+
     public async Task<List<ExchangeResponse>> GetCryptoPriceAsync(string? symbol)
     {
         try
@@ -25,22 +25,16 @@ public class KucoinExchange : ExchangeBase, IExchange
             {
                 symbol = DefineSymbol(symbol);
             }
-        
+
             var uri = GenerateUri(ExchangeConstants.KucoinBaseUrl, ExchangeConstants.KucoinPath, symbol);
-        
+
             var kucoinResponse = await _httpClientService.GetAsync<KucoinResponse>(uri);
-
-            var exchangResponses = new List<ExchangeResponse>();
-        
-            foreach (var response in kucoinResponse)
-            {
-                exchangResponses
-                    .AddRange(response?.data
-                        .Select(kucoinData => new List<CryptoResponse> { new(kucoinData.symbol, kucoinData.last) })
-                        .Select(cryptoResponse => new ExchangeResponse(ExchangeName, cryptoResponse)) ?? Array.Empty<ExchangeResponse>());
-            }
-
-            return exchangResponses;
+            
+            return kucoinResponse?
+                .Select(response => new ExchangeResponse(ExchangeName, new List<CryptoResponse>()
+                {
+                    new(response.data.last, response.data.symbol)
+                })).ToList();
         }
         catch (Exception ex)
         {
@@ -51,6 +45,6 @@ public class KucoinExchange : ExchangeBase, IExchange
 
     public string DefineSymbol(string? symbol)
     {
-        return $"{symbol}-USDT";
+        return $"{symbol!.ToUpper()}-USDT";
     }
 }
