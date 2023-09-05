@@ -1,9 +1,9 @@
+using CryptoGateway.Core.Adapters;
+using CryptoGateway.Core.Adapters.Interfaces;
 using CryptoGateway.Core.Factories.Interfaces;
 using CryptoGateway.Core.Services.Interfaces;
-using CryptoGateway.Infra.Adapters;
-using CryptoGateway.Infra.Adapters.Interfaces;
 
-namespace CryptoGateway.Core.Factories.Exchange;
+namespace CryptoGateway.Core.Factories;
 
 public class ExchangeFactory: IExchangeFactory
 {

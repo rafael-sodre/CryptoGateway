@@ -8,6 +8,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddHttpClientService();
+builder.Services.AddServices();
 builder.Services.AddAdapters();
 builder.Services.AddFactories();
 

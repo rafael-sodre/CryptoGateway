@@ -1,9 +1,9 @@
+using CryptoGateway.Core.Adapters.Interfaces;
 using CryptoGateway.Core.Factories.Interfaces;
 using CryptoGateway.Core.Services.Interfaces;
 using CryptoGateway.Domain.Responses;
-using CryptoGateway.Infra.Adapters.Interfaces;
 
-namespace CryptoGateway.Core.Services.Exchange;
+namespace CryptoGateway.Core.Services;
 
 public class ExchangeService : IExchangeService
 {

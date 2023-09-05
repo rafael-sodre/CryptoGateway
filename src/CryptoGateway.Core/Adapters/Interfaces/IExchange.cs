@@ -1,6 +1,6 @@
 using CryptoGateway.Domain.Responses;
 
-namespace CryptoGateway.Infra.Adapters.Interfaces;
+namespace CryptoGateway.Core.Adapters.Interfaces;
 
 public interface IExchange
 {

@@ -1,5 +1,5 @@
+using CryptoGateway.Core.Adapters.Interfaces;
 using CryptoGateway.Core.Services.Interfaces;
-using CryptoGateway.Infra.Adapters.Interfaces;
 
 namespace CryptoGateway.Core.Factories.Interfaces;
 

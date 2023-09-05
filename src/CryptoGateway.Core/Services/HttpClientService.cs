@@ -19,7 +19,7 @@ public class HttpClientService : IHttpClientService
             var response = await _httpClient.GetAsync(uri);
         
             var result = new List<T?>();
-
+            
             if (!response.IsSuccessStatusCode)
             {
                 return result;
@@ -27,7 +27,6 @@ public class HttpClientService : IHttpClientService
         
             var content = await response.Content.ReadAsStringAsync();
 
-            //TODO: criar uma sobrecarga neste método. Um retornando uma lista outro retornando um elemento
             try
             {
                 var contentDeserialized = JsonSerializer.Deserialize<T>(content);
@@ -36,7 +35,11 @@ public class HttpClientService : IHttpClientService
             catch (JsonException)
             {
                 var contentDeserialized = JsonSerializer.Deserialize<List<T>>(content);
-                result.AddRange(contentDeserialized);
+                
+                if (contentDeserialized is not null)
+                {
+                    result.AddRange(contentDeserialized);
+                }
             }
         
             return result;

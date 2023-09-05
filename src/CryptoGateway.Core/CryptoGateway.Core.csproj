@@ -9,12 +9,15 @@
 
     <ItemGroup>
         <ProjectReference Include="..\CryptoGateway.Domain\CryptoGateway.Domain.csproj"/>
-        <ProjectReference Include="..\CryptoGateway.Infra\CryptoGateway.Infra.csproj" />
     </ItemGroup>
 
 
     <ItemGroup>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
+
+
+
+
 
 
     </ItemGroup>

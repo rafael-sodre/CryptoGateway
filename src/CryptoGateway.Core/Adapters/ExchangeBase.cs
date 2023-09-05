@@ -1,4 +1,4 @@
-namespace CryptoGateway.Infra.Adapters;
+namespace CryptoGateway.Core.Adapters;
 
 public abstract class ExchangeBase
 {

@@ -1,10 +1,9 @@
-using CryptoGateway.Core.Services;
+using CryptoGateway.Core.Adapters.Interfaces;
 using CryptoGateway.Core.Services.Interfaces;
 using CryptoGateway.Domain.Constants;
 using CryptoGateway.Domain.Responses;
-using CryptoGateway.Infra.Adapters.Interfaces;
 
-namespace CryptoGateway.Infra.Adapters;
+namespace CryptoGateway.Core.Adapters;
 
 public class KucoinExchange : ExchangeBase, IExchange
 {
