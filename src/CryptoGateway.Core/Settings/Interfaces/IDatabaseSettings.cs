@@ -4,5 +4,4 @@ public interface IDatabaseSettings
 {
     public string PostgreSQL { get; }
     public string Redis { get; }
-    public string RabbitMq { get; }
 }

@@ -6,6 +6,4 @@ public class DatabaseSettings: IDatabaseSettings
 
     public string Redis { get; set; }
 
-    public string RabbitMq { get; set; }
-
 }

@@ -64,5 +64,6 @@ public static class ServicesServiceCollection
         
         //Redis
         services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(databaseSettings.Redis));
+        
     }
 }
