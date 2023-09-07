@@ -13,7 +13,12 @@
 
 
     <ItemGroup>
+        <PackageReference Include="StackExchange.Redis" Version="2.6.122" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
+
+
+
+
 
 
 

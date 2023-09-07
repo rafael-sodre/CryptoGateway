@@ -7,6 +7,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoGateway.Domain", "src\CryptoGateway.Domain\CryptoGateway.Domain.csproj", "{861C81C7-9AED-4A8F-AD25-81633569EB14}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A5934EE8-387E-4F5D-8F06-EBC61D2D4D13}"
+	ProjectSection(SolutionItems) = preProject
+		src\docker-compose.yml = src\docker-compose.yml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{189BF553-3D0F-44EA-AAA3-A158AD1A8A40}"
 EndProject

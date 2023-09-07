@@ -5,9 +5,12 @@ using CryptoGateway.Core.Factories;
 using CryptoGateway.Core.Factories.Interfaces;
 using CryptoGateway.Core.Services;
 using CryptoGateway.Core.Services.Interfaces;
+using CryptoGateway.Core.Settings;
+using Microsoft.Extensions.Options;
 using Polly;
 using Polly.Extensions.Http;
 using Polly.Timeout;
+using StackExchange.Redis;
 
 namespace CryptoGateway.API.IoC;
 
@@ -39,6 +42,7 @@ public static class ServicesServiceCollection
     public static void AddServices(this IServiceCollection services)
     {
         services.AddScoped<IExchangeService, ExchangeService>();
+        services.AddScoped<IRedisService, RedisService>();
     }
 
     public static void AddAdapters(this IServiceCollection services)
@@ -50,5 +54,15 @@ public static class ServicesServiceCollection
     public static void AddFactories(this IServiceCollection services)
     {
         services.AddScoped<IExchangeFactory, ExchangeFactory>();
+    }
+
+    public static void AddDatabaseConfigurations(this IServiceCollection services, IConfiguration configuration)
+    {
+        var databaseSettings = new DatabaseSettings();
+        configuration.GetSection("ConnectionStrings").Bind(databaseSettings);
+        services.AddSingleton<IDatabaseSettings>(databaseSettings);
+        
+        //Redis
+        services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(databaseSettings.Redis));
     }
 }
