@@ -1,6 +1,7 @@
 using CryptoGateway.API.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 
 builder.Services.AddControllers();
 
@@ -11,6 +12,8 @@ builder.Services.AddHttpClientService();
 builder.Services.AddServices();
 builder.Services.AddAdapters();
 builder.Services.AddFactories();
+builder.Services.AddDatabaseConfigurations(configuration);
+
 
 var app = builder.Build();
 
